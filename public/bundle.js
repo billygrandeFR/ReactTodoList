@@ -106,10 +106,10 @@
 	var TodoApp = __webpack_require__(240);
 
 	// load foundation
-	__webpack_require__(243);
+	__webpack_require__(244);
 	$(document).foundation();
 	// Load css
-	__webpack_require__(247);
+	__webpack_require__(248);
 
 	ReactDOM.render(React.createElement(TodoApp, null), document.getElementById('app'));
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
@@ -26599,6 +26599,7 @@
 
 	var React = __webpack_require__(8);
 	var TodoList = __webpack_require__(241);
+	var AddTodo = __webpack_require__(243);
 
 	var TodoApp = React.createClass({
 	  displayName: 'TodoApp',
@@ -26614,6 +26615,10 @@
 	      }]
 	    };
 	  },
+	  handleAddTodo: function handleAddTodo(text) {
+
+	    alert('New Todo: ' + text);
+	  },
 	  render: function render() {
 	    var todos = this.state.todos;
 
@@ -26621,7 +26626,8 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      React.createElement(TodoList, { todos: todos })
+	      React.createElement(TodoList, { todos: todos }),
+	      React.createElement(AddTodo, { onTodo: this.handleAddTodo })
 	    );
 	  }
 
@@ -26694,13 +26700,62 @@
 /* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	var React = __webpack_require__(8);
+
+	var AddTodo = React.createClass({
+	  displayName: 'AddTodo',
+
+	  onFormSubmit: function onFormSubmit(e) {
+	    e.preventDefault();
+	    var text = this.refs.formtext.value;
+	    if (text.length > 0) {
+	      this.refs.formtext.value = '';
+	      this.props.onTodo(text);
+	    } else {
+	      this.refs.formtext.focus();
+	    }
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'form',
+	        { onSubmit: this.onFormSubmit },
+	        React.createElement(
+	          'div',
+	          null,
+	          React.createElement('input', { type: 'text', ref: 'formtext', placeholder: 'Add Todo...' })
+	        ),
+	        React.createElement(
+	          'div',
+	          null,
+	          React.createElement(
+	            'button',
+	            { className: 'button expanded' },
+	            'Add Todo'
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = AddTodo;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(244);
+	var content = __webpack_require__(245);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(246)(content, {});
+	var update = __webpack_require__(247)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -26717,10 +26772,10 @@
 	}
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(245)();
+	exports = module.exports = __webpack_require__(246)();
 	// imports
 
 
@@ -26731,7 +26786,7 @@
 
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports) {
 
 	/*
@@ -26787,7 +26842,7 @@
 
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -27039,16 +27094,16 @@
 
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(248);
+	var content = __webpack_require__(249);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(246)(content, {});
+	var update = __webpack_require__(247)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -27065,10 +27120,10 @@
 	}
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(245)();
+	exports = module.exports = __webpack_require__(246)();
 	// imports
 
 
