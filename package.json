@@ -25,6 +25,7 @@
     "babel-preset-stage-0": "^6.22.0",
     "css-loader": "^0.23.1",
     "foundation-sites": "6.2.0",
+    "moment": "^2.17.1",
     "node-sass": "^3.4.2",
     "node-uuid": "^1.4.7",
     "sass-loader": "^3.1.2",

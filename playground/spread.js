@@ -1,4 +1,4 @@
-var groupA = ['mathew', 'hakim', 'benoit'];
+var groupA = ['mathew', 'pierre', 'benoit'];
 var groupB = ['Aurelie', 'Carole', 'Valerie'];
 
 var mast = [...groupA, ...groupB];
